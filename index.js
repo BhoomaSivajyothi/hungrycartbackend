@@ -6,7 +6,7 @@ const bodyparse = require("body-parser");
 const FirmRouter = require("./routers/firmRouter");
 const ProductRouter=require('./routers/productRouter');
 const path=require('path')
-
+const cors=require('cors')
 const app = express();
 
 const PORT = process.env.PORT || 4000;
@@ -16,7 +16,7 @@ app.listen(PORT, () => {
 });
 
 dotenv.config();
-
+app.use(cors())
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("mongodb connected sucessfully"))
