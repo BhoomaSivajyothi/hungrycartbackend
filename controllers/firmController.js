@@ -19,7 +19,8 @@ const addFirm = async (req, res) => {
   try {
     console.log("Apl called");
     const { firmName, area, category, region, offers } = req.body;
-    const image = req.file ? req.file.filename : undefined;
+    const image = req.file ? req.file.name : undefined;
+    console.log(image)
     const vendor = await Vendor.findById(req.vendorId);
     // console.log(vendor);
     if (!vendor) {
@@ -37,7 +38,7 @@ const addFirm = async (req, res) => {
     });
     const savedFirm = await firm.save();
     // console.log(savedFirm)
-    console.log(vendor)
+    // console.log(vendor)
     vendor.firm.push(savedFirm);
       // console.log(vendor)
     await vendor.save();
