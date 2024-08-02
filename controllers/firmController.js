@@ -39,10 +39,11 @@ const addFirm = async (req, res) => {
     const savedFirm = await firm.save();
     // console.log(savedFirm)
     // console.log(vendor)
+    const firmId= savedFirm._id
     vendor.firm.push(savedFirm);
       // console.log(vendor)
     await vendor.save();
-    res.status(200).json({ message: "Firm added sucessfully" });
+    res.status(200).json({ message: "Firm added sucessfully",firmId });
   } 
   catch (error) {
     console.log("came to catch block");
